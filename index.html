@@ -1,363 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ReBuild Materials | Reclaimed Building Materials</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7f2;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* NAVIGATION */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: #ffffff;
-            padding: 15px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #2e6b45;
-        }
-
-        .logo span {
-            color: #f28c28;
-        }
-
-        .menu {
-            display: flex;
-            gap: 10px;
-            list-style: none;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            padding: 10px 16px;
-            border-radius: 25px;
-            transition: 0.3s;
-        }
-
-        .menu a:hover {
-            background: #2e6b45;
-            color: white;
-        }
-
-        .quote-button {
-            background: #f28c28 !important;
-            color: white !important;
-        }
-
-        .quote-button:hover {
-            background: #d96f0c !important;
-        }
-
-        /* HERO */
-
-        .hero {
-            background: linear-gradient(
-                135deg,
-                #2e6b45,
-                #3f8055
-            );
-
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .hero h1 {
-            font-size: 52px;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span {
-            color: #ffad4d;
-        }
-
-        .hero p {
-            font-size: 21px;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 13px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .orange-button {
-            background: #f28c28;
-            color: white;
-        }
-
-        .orange-button:hover {
-            background: #d96f0c;
-            transform: translateY(-3px);
-        }
-
-        .white-button {
-            background: white;
-            color: #2e6b45;
-        }
-
-        .white-button:hover {
-            transform: translateY(-3px);
-        }
-
-        /* GENERAL */
-
-        .container {
-            max-width: 1150px;
-            margin: auto;
-            padding: 65px 25px;
-        }
-
-        section {
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 34px;
-            color: #2e6b45;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: auto;
-        }
-
-        /* CARDS */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.10);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .card-icon {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #2e6b45;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #666;
-        }
-
-        /* MATERIALS */
-
-        .materials {
-            background: #ffffff;
-        }
-
-        .material-card {
-            overflow: hidden;
-            padding: 0;
-        }
-
-        .material-top {
-            height: 120px;
-            background: #e8f0e8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 55px;
-        }
-
-        .material-content {
-            padding: 25px;
-        }
-
-        .material-content h3 {
-            margin-bottom: 8px;
-        }
-
-        /* HOW IT WORKS */
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .step {
-            background: white;
-            padding: 30px;
-            text-align: center;
-            border-radius: 16px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.09);
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: #f28c28;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .step h3 {
-            color: #2e6b45;
-            margin-bottom: 8px;
-        }
-
-        /* CTA */
-
-        .cta {
-            background: #2e6b45;
-            color: white;
-            text-align: center;
-            padding: 60px 25px;
-            border-radius: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .cta h2 {
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
-
-        .cta p {
-            margin-bottom: 25px;
-        }
-
-        /* COUPON */
-
-        .coupon {
-            background: #fff4e6;
-            border: 2px dashed #f28c28;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .coupon h3 {
-            color: #d96f0c;
-            font-size: 24px;
-        }
-
-        .coupon-code {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 8px 18px;
-            background: #f28c28;
-            color: white;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: #1f4b31;
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-        }
-
-        footer h3 {
-            margin-bottom: 8px;
-        }
-
-        footer p {
-            color: #dce9df;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 800px) {
-
-            nav {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .menu {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .cards,
-            .steps {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 38px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ReBuild Materials</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7f2;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: white;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #287044;
+}
+
+.logo span {
+    color: #ed7d22;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 16px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #287044;
+    color: white;
+}
+
+.quote-nav {
+    background: #ed7d22;
+    color: white !important;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #287044, #3d8755);
+    color: white;
+    text-align: center;
+    padding: 95px 20px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #ffb15a;
+}
+
+.hero p {
+    max-width: 720px;
+    margin: auto;
+    font-size: 20px;
+}
+
+.buttons {
+    margin-top: 30px;
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.orange {
+    background: #ed7d22;
+    color: white;
+}
+
+.orange:hover {
+    background: #c9610c;
+    transform: translateY(-3px);
+}
+
+.white {
+    background: white;
+    color: #287044;
+}
+
+.white:hover {
+    transform: translateY(-3px);
+}
+
+/* GENERAL */
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 65px 25px;
+}
+
+.section {
+    margin-bottom: 70px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.title h2 {
+    color: #287044;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.title p {
+    color: #666;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* CARDS */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.icon {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #287044;
+    margin-bottom: 10px;
+}
+
+/* MATERIALS */
+
+.material {
+    padding: 0;
+    overflow: hidden;
+}
+
+.material-image {
+    height: 130px;
+    background: #e5eee6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
+}
+
+.material-content {
+    padding: 25px;
+}
+
+/* PROCESS */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.step {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.09);
+}
+
+.number {
+    width: 50px;
+    height: 50px;
+    background: #ed7d22;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto 15px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* QUOTE */
+
+.quote-box {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.10);
+    max-width: 750px;
+    margin: auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #287044;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 110px;
+}
+
+/* COUPON */
+
+.coupon {
+    background: #fff3e5;
+    border: 2px dashed #ed7d22;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.coupon h3 {
+    color: #d56612;
+    font-size: 25px;
+}
+
+.code {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: #ed7d22;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* COMPARISON */
+
+.comparison {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th {
+    background: #287044;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+tr:hover {
+    background: #f1f5f1;
+}
+
+/* DECISION */
+
+.decision {
+    background: #287044;
+    color: white;
+    padding: 50px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.decision h2 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.decision strong {
+    color: #ffb15a;
+}
+
+/* FOOTER */
+
+footer {
+    background: #1d4c2e;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+footer p {
+    color: #dce9df;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cards,
+    .steps,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -370,16 +403,13 @@
         ReBuild <span>Materials</span>
     </div>
 
-    <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="materials.html">Materials</a></li>
-        <li><a href="estimate.html">Estimate</a></li>
-        <li><a href="coupons.html">Coupons</a></li>
-        <li>
-            <a href="estimate.html" class="quote-button">
-                Get a Quote
-            </a>
-        </li>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#materials">Materials</a></li>
+        <li><a href="#estimate">Estimate</a></li>
+        <li><a href="#coupons">Coupons</a></li>
+        <li><a href="#comparison">Comparison</a></li>
+        <li><a href="#estimate" class="quote-nav">Get a Quote</a></li>
     </ul>
 
 </nav>
@@ -387,312 +417,526 @@
 
 <!-- HERO -->
 
-<header class="hero">
+<header class="hero" id="home">
 
     <h1>
         Build Again with <span>Reclaimed</span>
     </h1>
 
     <p>
-        Affordable, reusable building materials for homeowners,
-        contractors, and builders.
+        Affordable and reusable building materials for homeowners,
+        contractors, builders, and DIY projects.
     </p>
 
-    <div class="hero-buttons">
-
-        <a href="materials.html" class="button orange-button">
+    <div class="buttons">
+        <a href="#materials" class="button orange">
             Browse Materials
         </a>
 
-        <a href="estimate.html" class="button white-button">
+        <a href="#estimate" class="button white">
             Get an Estimate
         </a>
-
     </div>
 
 </header>
 
 
-<!-- ABOUT -->
-
 <div class="container">
 
-    <section>
+<!-- ABOUT -->
 
-        <div class="section-title">
+<section class="section">
 
-            <h2>Welcome to ReBuild Materials</h2>
+    <div class="title">
+        <h2>Welcome to ReBuild Materials</h2>
+
+        <p>
+            We help give quality building materials a second life
+            while helping customers save money and reduce construction
+            waste.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">♻️</div>
+            <h3>Reuse Materials</h3>
+            <p>
+                We make usable construction materials available
+                for new projects instead of sending them to waste.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💰</div>
+            <h3>Save Money</h3>
+            <p>
+                Find affordable reclaimed materials for renovation,
+                construction, and DIY projects.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏗️</div>
+            <h3>Build Sustainably</h3>
+            <p>
+                Reuse useful materials and support a more sustainable
+                approach to construction.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MATERIALS -->
+
+<section class="section" id="materials">
+
+    <div class="title">
+
+        <h2>Available Materials</h2>
+
+        <p>
+            Browse some of the materials available through
+            ReBuild Materials.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card material">
+
+            <div class="material-image">
+                🪵
+            </div>
+
+            <div class="material-content">
+                <h3>Reclaimed Lumber</h3>
+
+                <p>
+                    Recovered wood suitable for construction,
+                    renovation, furniture, and DIY projects.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="card material">
+
+            <div class="material-image">
+                🚪
+            </div>
+
+            <div class="material-content">
+                <h3>Doors & Windows</h3>
+
+                <p>
+                    Reusable doors, windows, frames, and related
+                    building components.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="card material">
+
+            <div class="material-image">
+                🧱
+            </div>
+
+            <div class="material-content">
+                <h3>Flooring & Fixtures</h3>
+
+                <p>
+                    Reclaimed flooring, fixtures, hardware,
+                    and other reusable materials.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="section">
+
+    <div class="title">
+
+        <h2>How It Works</h2>
+
+        <p>
+            Getting materials for your next project is simple.
+        </p>
+
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="number">1</div>
+
+            <h3>Browse</h3>
 
             <p>
-                We give quality building materials a second life
-                while helping customers save money and reduce
-                construction waste.
+                Look through available reclaimed materials.
             </p>
 
         </div>
 
-        <div class="cards">
+        <div class="step">
 
-            <div class="card">
+            <div class="number">2</div>
 
-                <div class="card-icon">♻️</div>
-
-                <h3>Reuse</h3>
-
-                <p>
-                    We recover usable construction materials and
-                    make them available for new projects.
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <div class="card-icon">💰</div>
-
-                <h3>Save Money</h3>
-
-                <p>
-                    Find useful building materials at affordable
-                    prices for your next project.
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <div class="card-icon">🏗️</div>
-
-                <h3>Build Better</h3>
-
-                <p>
-                    Help reduce construction waste while finding
-                    materials that fit your project.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- MATERIALS -->
-
-    <section class="materials">
-
-        <div class="section-title">
-
-            <h2>Popular Materials</h2>
+            <h3>Request a Quote</h3>
 
             <p>
-                Explore some of the reclaimed materials available
-                through ReBuild Materials.
+                Tell us what you need and request an estimate.
             </p>
 
         </div>
 
-        <div class="cards">
+        <div class="step">
 
-            <div class="card material-card">
+            <div class="number">3</div>
 
-                <div class="material-top">
-                    🪵
-                </div>
-
-                <div class="material-content">
-
-                    <h3>Reclaimed Lumber</h3>
-
-                    <p>
-                        Recovered wood for construction, renovation,
-                        furniture, and DIY projects.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="card material-card">
-
-                <div class="material-top">
-                    🚪
-                </div>
-
-                <div class="material-content">
-
-                    <h3>Doors & Windows</h3>
-
-                    <p>
-                        Reusable doors, windows, frames, and related
-                        building components.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="card material-card">
-
-                <div class="material-top">
-                    🧱
-                </div>
-
-                <div class="material-content">
-
-                    <h3>Flooring & Fixtures</h3>
-
-                    <p>
-                        Reclaimed flooring, fixtures, hardware,
-                        and other reusable materials.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <br>
-
-        <div style="text-align:center;">
-
-            <a href="materials.html"
-               class="button orange-button">
-                View All Materials
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- HOW IT WORKS -->
-
-    <section>
-
-        <div class="section-title">
-
-            <h2>How It Works</h2>
+            <h3>Pickup</h3>
 
             <p>
-                Getting reclaimed materials for your project
-                is simple.
+                Arrange a convenient time to pick up your materials.
             </p>
 
         </div>
 
+    </div>
 
-        <div class="steps">
+</section>
 
-            <div class="step">
 
-                <div class="step-number">
-                    1
-                </div>
+<!-- ESTIMATE -->
 
-                <h3>Browse</h3>
+<section class="section" id="estimate">
 
-                <p>
-                    Look through our available materials and
-                    find what you need.
-                </p>
+    <div class="title">
 
+        <h2>Request an Estimate</h2>
+
+        <p>
+            Tell us what you are looking for and we will prepare
+            an estimated quote.
+        </p>
+
+    </div>
+
+    <div class="quote-box">
+
+        <div class="form-row">
+
+            <div>
+                <label>Name</label>
+                <input type="text" placeholder="Your name">
             </div>
 
-
-            <div class="step">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <h3>Request a Quote</h3>
-
-                <p>
-                    Tell us what you need and request an
-                    estimate for your project.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <h3>Pickup</h3>
-
-                <p>
-                    Arrange a convenient pickup time for
-                    your materials.
-                </p>
-
+            <div>
+                <label>Email</label>
+                <input type="email" placeholder="Your email">
             </div>
 
         </div>
 
-    </section>
+        <div class="form-row">
+
+            <div>
+                <label>Material</label>
+
+                <select>
+                    <option>Reclaimed Lumber</option>
+                    <option>Doors & Windows</option>
+                    <option>Flooring</option>
+                    <option>Fixtures & Hardware</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Quantity</label>
+                <input type="text" placeholder="Example: 500 sq. ft.">
+            </div>
+
+        </div>
+
+        <label>Project Details</label>
+
+        <textarea
+            placeholder="Tell us what you need..."></textarea>
+
+        <div style="text-align:center">
+
+            <button
+                class="button orange"
+                type="button"
+                onclick="alert('Thank you! Your estimate request has been received.')">
+                Request Estimate
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- COUPON -->
+<!-- COUPONS -->
 
-    <section>
+<section class="section" id="coupons">
+
+    <div class="title">
+
+        <h2>Coupons & Deals</h2>
+
+        <p>
+            Save more on your next reclaimed-material purchase.
+        </p>
+
+    </div>
+
+    <div class="cards">
 
         <div class="coupon">
 
-            <h3>🎉 New Customer Special</h3>
+            <h3>10% OFF</h3>
 
             <p>
-                Save on your first qualifying purchase
-                of reclaimed materials.
+                New customer discount on your first qualifying purchase.
             </p>
 
-            <div class="coupon-code">
+            <div class="code">
                 REBUILD10
             </div>
 
-            <p style="margin-top:10px;">
-                Show this code when contacting ReBuild Materials.
+        </div>
+
+        <div class="coupon">
+
+            <h3>Pickup Special</h3>
+
+            <p>
+                Ask about current pickup promotions when requesting
+                your quote.
             </p>
+
+            <div class="code">
+                PICKUP
+            </div>
+
+        </div>
+
+        <div class="coupon">
+
+            <h3>Contractor Savings</h3>
+
+            <p>
+                Contact us about volume pricing for larger projects.
+            </p>
+
+            <div class="code">
+                BUILDER
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WEBSITE BUILDER COMPARISON -->
+
+<section class="section" id="comparison">
+
+    <div class="title">
+
+        <h2>Website Builder Comparison</h2>
+
+        <p>
+            For this project, I compared Google Sites and
+            GoDaddy Website Builder based on the needs of
+            ReBuild Materials.
+        </p>
+
+    </div>
+
+    <div class="comparison">
+
+        <table>
+
+            <tr>
+                <th>Category</th>
+                <th>Google Sites</th>
+                <th>GoDaddy Website Builder</th>
+            </tr>
+
+            <tr>
+                <td>Cost</td>
+                <td>Low initial cost</td>
+                <td>More paid options</td>
+            </tr>
+
+            <tr>
+                <td>Ease of Use</td>
+                <td>Very easy</td>
+                <td>Easy with more features</td>
+            </tr>
+
+            <tr>
+                <td>Design</td>
+                <td>Simple</td>
+                <td>More customizable</td>
+            </tr>
+
+            <tr>
+                <td>Customization</td>
+                <td>Limited</td>
+                <td>More flexible</td>
+            </tr>
+
+            <tr>
+                <td>Business Features</td>
+                <td>Basic</td>
+                <td>More extensive</td>
+            </tr>
+
+            <tr>
+                <td>Google Integration</td>
+                <td>Excellent</td>
+                <td>Good</td>
+            </tr>
+
+            <tr>
+                <td>Maintenance</td>
+                <td>Very easy</td>
+                <td>Easy</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- PROS AND CONS -->
+
+<section class="section">
+
+    <div class="title">
+
+        <h2>Pros & Cons</h2>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>Google Sites</h3>
+
+            <p><strong>Pros</strong></p>
+
+            <ul>
+                <li>Simple to use</li>
+                <li>Low cost</li>
+                <li>Easy maintenance</li>
+                <li>Strong Google integration</li>
+            </ul>
 
             <br>
 
-            <a href="coupons.html"
-               class="button orange-button">
-                View All Coupons
-            </a>
+            <p><strong>Cons</strong></p>
+
+            <ul>
+                <li>Limited customization</li>
+                <li>Fewer advanced features</li>
+                <li>Limited e-commerce options</li>
+            </ul>
 
         </div>
 
-    </section>
 
+        <div class="card">
 
-    <!-- CTA -->
+            <h3>GoDaddy Website Builder</h3>
 
-    <section>
+            <p><strong>Pros</strong></p>
 
-        <div class="cta">
+            <ul>
+                <li>Professional templates</li>
+                <li>More customization</li>
+                <li>More business features</li>
+                <li>Better options for future expansion</li>
+            </ul>
 
-            <h2>Ready to ReBuild?</h2>
+            <br>
 
-            <p>
-                Tell us what materials you are looking for
-                and we'll help you find the right options.
-            </p>
+            <p><strong>Cons</strong></p>
 
-            <a href="estimate.html"
-               class="button orange-button">
-                Get Your Estimate
-            </a>
+            <ul>
+                <li>Some features require paid plans</li>
+                <li>Can become more expensive</li>
+                <li>More features to manage</li>
+            </ul>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
+
+<!-- FINAL DECISION -->
+
+<section class="section">
+
+    <div class="decision">
+
+        <h2>My Choice for ReBuild Materials</h2>
+
+        <p>
+            For the initial stage of ReBuild Materials, I would
+            choose <strong>Google Sites</strong>.
+        </p>
+
+        <br>
+
+        <p>
+            The main reasons are its low initial cost, simple
+            interface, easy maintenance, and integration with
+            Google tools such as Gmail, Drive, Forms, and Calendar.
+        </p>
+
+        <br>
+
+        <p>
+            GoDaddy Website Builder provides more design and
+            business features, which could become useful as the
+            company grows. However, I would start with a simpler
+            solution and consider a more advanced platform later
+            if the business needs additional functionality.
+        </p>
+
+    </div>
+
+</section>
 
 </div>
 
@@ -704,7 +948,7 @@
     <h3>ReBuild Materials</h3>
 
     <p>
-        Giving useful building materials a second life.
+        Affordable. Sustainable. Reclaimed.
     </p>
 
     <p style="margin-top:10px;">
